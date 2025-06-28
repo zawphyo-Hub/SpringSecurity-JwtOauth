@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/jwt_security
+    username: root
+    password: Englishphone2003@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 38124831326-51geto8s2559hhldbubv91b6vvj60lbk.apps.googleusercontent.com
+            clientSecret: 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
+            scope:
+              - email
+              - profile
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+
+          github:
+            clientId: Iv23libIMmgJtDOUqZKa
+            clientSecret: 3d3c0b97fc185110da1a8e52d1a6d569e97cc203
+            scope:
+              - user:email
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
