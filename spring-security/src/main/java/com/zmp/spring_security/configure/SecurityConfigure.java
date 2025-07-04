@@ -37,6 +37,7 @@ public class SecurityConfigure {
                             .requestMatchers("/api/v1/auth/**").permitAll()
                             .anyRequest().authenticated()
                     )
+//                    .formLogin(form -> form.disable())
                     .sessionManagement(session -> session
                             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     )

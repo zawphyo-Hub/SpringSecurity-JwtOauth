@@ -12,11 +12,16 @@ public class AuthController {
 
     private final AuthService authService;
 
-    //AuthenticationResponse store token as a response after successful login or registration.
+
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest registerRequest){
-        return ResponseEntity.ok(authService.register(registerRequest));
+        var response = authService.register(registerRequest);
+        return ResponseEntity.ok(response);
+//        if (registerRequest.isMfaEnabled()){
+//            return ResponseEntity.ok(response);
+//        }
+//        return ResponseEntity.accepted().build();
 
     }
 
@@ -26,5 +31,13 @@ public class AuthController {
 
         return ResponseEntity.ok(authService.authentication(authRequest));
     }
+
+    @PostMapping("/verify")
+    public ResponseEntity<?> verifyCode(
+            @RequestBody VerificationRequest verificationRequest){
+        return ResponseEntity.ok(authService.verifyCode(verificationRequest));
+
+    }
+
 
 }

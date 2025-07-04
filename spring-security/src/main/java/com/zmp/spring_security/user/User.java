@@ -34,6 +34,8 @@ public class User implements UserDetails {
     private String email;
 
     private String password;
+    private Boolean mfaEnabled;
+    private String secret; //secret key for 2FA
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -49,6 +51,7 @@ public class User implements UserDetails {
         return password;
     }
 
+    //return unique identifier for login (email in this case)
     @Override
     public String getUsername() {
         return email;

@@ -1,37 +1,44 @@
-import Login from "./pages/Login"
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Register from "./pages/Register";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+
 import Home from "./pages/Home";
-
 import Navbar from "./pages/Navbar";
+import SignIn from "./pages/SignIn/SignIn";
 import OAuthSuccessHandler from "./component/OAuthSuccessHandler";
+import SignUp from "./pages/SignUp/SignUp";
+import QrCode from "./pages/2FA/QrCode";
+import TotpLogin from "./pages/2FA/TotpLogin";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+
+function AppContent() {
+  const location = useLocation();
+  const hideNavbarPaths = ["/qrcode", "/totplogin"];
+
+  const shouldHideNavbar = hideNavbarPaths.includes(location.pathname);
 
   return (
     <>
-   
-    <BrowserRouter>
-    <ToastContainer position="top-center" />
-      <Navbar />
+      <ToastContainer position="top-center" />
+      {!shouldHideNavbar && <Navbar />}
+
       <Routes>
         <Route path="/oauthsuccess" element={<OAuthSuccessHandler />} />
-        <Route path="/" element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
-        <Route path="/home" element={<Home />}/>
-
-
+        <Route path="/" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/qrcode" element={<QrCode />} />
+        <Route path="/totplogin" element={<TotpLogin />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
-        
-       
-    </BrowserRouter>
-    
-         
-
-
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
 
