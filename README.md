@@ -1,5 +1,5 @@
 # SpringSecurity-JwtOauth
-This is a demo project for user authentication and authorization using Spring Boot with JWT, OAuth2, two factor authentication and MySQL for the backend, and React for the frontend.
+This is a demo project that implements user authentication and authorization using Spring Boot with JWT, OAuth2, and two-factor authentication. It uses MySQL for the backend and React for the frontend.
 
 ## Lessons Learned
 Learned how to create and manage databases using Spring Boot, including configuring and using Spring Data JPA.
