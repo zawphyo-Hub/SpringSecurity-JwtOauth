@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/jwt_security
     username: root
-    password: Englishphone2003@
+    password: #insert password
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   security:
@@ -10,7 +10,7 @@ spring:
       client:
         registration:
           google:
-            clientId: 38124831326-51geto8s2559hhldbubv91b6vvj60lbk.apps.googleusercontent.com
+            clientId: #insert id
             clientSecret: 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
             scope:
               - email
@@ -18,7 +18,7 @@ spring:
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
 
           github:
-            clientId: Iv23libIMmgJtDOUqZKa
+            clientId: #insert id
             clientSecret: 3d3c0b97fc185110da1a8e52d1a6d569e97cc203
             scope:
               - user:email
